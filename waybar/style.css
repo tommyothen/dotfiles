@@ -1,0 +1,172 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font", monospace;
+    font-size: 13px;
+    min-height: 0;
+    transition: 0.3s;
+}
+
+window#waybar {
+    background: rgba(21, 18, 27, 0.8);
+    border-bottom: 2px solid rgba(100, 114, 125, 0.5);
+}
+
+#workspaces {
+    background: rgba(21, 18, 27, 0.4);
+    margin: 5px;
+    padding: 0 5px;
+    border-radius: 10px;
+}
+
+#workspaces button {
+    padding: 0 5px;
+    margin: 2px;
+    background: rgba(69, 71, 90, 0.6);
+    color: #cdd6f4;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    min-width: 30px;
+}
+
+#workspaces button.active {
+    background: rgba(148, 226, 213, 0.9);
+    color: #1e1e2e;
+    min-width: 35px;
+    box-shadow: rgba(0, 0, 0, 0.288) 2px 2px 5px 2px;
+}
+
+#workspaces button:hover {
+    background: rgba(148, 226, 213, 0.7);
+    color: #1e1e2e;
+}
+
+#clock,
+#cpu,
+#memory,
+#network,
+#pulseaudio,
+#tray {
+    background: rgba(69, 71, 90, 0.6);
+    padding: 0 10px;
+    margin: 5px;
+    border-radius: 10px;
+}
+
+#clock {
+    background: rgba(148, 226, 213, 0.8);
+    color: #1e1e2e;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+#network {
+    color: #94e2d5;
+}
+
+#network.disconnected {
+    background: rgba(245, 60, 60, 0.8);
+    color: #ffffff;
+}
+
+#pulseaudio {
+    color: #89b4fa;
+}
+
+#pulseaudio.muted {
+    background: rgba(144, 177, 177, 0.6);
+}
+
+#cpu {
+    color: #89b4fa;
+}
+
+#memory {
+    color: #fab387;
+}
+
+#tray {
+    background: rgba(69, 71, 90, 0.6);
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background: rgba(235, 77, 75, 0.8);
+}
+
+tooltip {
+    background: rgba(21, 18, 27, 0.9);
+    border: 1px solid rgba(148, 226, 213, 0.8);
+    border-radius: 8px;
+}
+
+tooltip label {
+    color: #cdd6f4;
+}
+
+#custom-power {
+    background: rgba(245, 60, 60, 0.6);
+    color: #ffffff;
+    padding: 0 10px;
+    margin: 5px;
+    margin-right: 5px;
+    border-radius: 10px;
+}
+
+#custom-power:hover {
+    background: rgba(245, 60, 60, 0.9);
+}
+
+#custom-weather {
+    background: rgba(69, 71, 90, 0.6);  /* Match other right-side modules */
+    color: #94e2d5;                     /* Using your teal accent color */
+    padding: 0 10px;
+    margin: 5px;
+    border-radius: 10px;
+}
+
+#custom-weather:hover {
+    background: rgba(69, 71, 90, 0.8);  /* Slightly darker on hover, optional */
+}
+
+#custom-spotify {
+    background: rgba(69, 71, 90, 0.6);
+    color: #f5c2e7;    /* Using a purple color to distinguish media controls */
+    padding: 0 10px;
+    margin: 5px;
+    border-radius: 10px;
+    min-width: 100px;  /* Ensures some minimum space for the text */
+}
+
+#custom-spotify:hover {
+    background: rgba(69, 71, 90, 0.8);
+}
+
+#custom-spotify.playing {
+    color: #a6e3a1;    /* Green when playing */
+}
+
+#custom-spotify.paused {
+    color: #f5c2e7;    /* Purple when paused */
+}
+
+/* Enhanced tooltip styling */
+tooltip {
+    background: rgba(21, 18, 27, 0.95);
+    border: 1px solid rgba(148, 226, 213, 0.8);
+    border-radius: 8px;
+    padding: 4px;
+}
+
+tooltip * {
+    color: #cdd6f4;
+    font-size: 14px;  /* Slightly larger font for better readability */
+}
+
+tooltip box {
+    margin: 5px;
+}

@@ -1,0 +1,116 @@
+{
+    "layer": "top",
+    "position": "top",
+    "mod": "dock",
+    "exclusive": true,
+    "passthrough": false,
+    "gtk-layer-shell": true,
+    "height": 40,
+    "spacing": 4,
+    
+    "modules-left": ["hyprland/workspaces", "tray", "custom/spotify"],
+    "modules-center": ["clock"],
+    "modules-right": ["custom/weather", "pulseaudio", "network", "cpu", "memory", "custom/power"],
+    
+    "hyprland/workspaces": {
+        "format": "{name}",
+        "on-click": "activate",
+        "all-outputs": true,
+        "sort-by-number": true,
+        "format-icons": {
+            "1": "1",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "urgent": "",
+            "active": "",
+            "default": ""
+        },
+        "persistent_workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": []
+        },
+        "show-special": false,
+        "active-only": false
+    },
+
+    "clock": {
+        "format": "{:%H:%M}",
+        "format-alt": "{:%Y-%m-%d}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+
+    "cpu": {
+        "format": "{usage}%",
+        "tooltip": false,
+        "interval": 1
+    },
+
+    "memory": {
+        "format": "{}%"
+    },
+
+    "network": {
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "{ipaddr}/{cidr}",
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+
+    "pulseaudio": {
+        "format": "{icon}{volume}%",
+        "format-bluetooth": "{volume}% {icon} ",
+        "format-bluetooth-muted": " {icon} ",
+        "format-muted": " ",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+
+    "tray": {
+        "icon-size": 21,
+        "spacing": 10
+    },
+
+    "custom/power": {
+        "format": "⏻",
+        "on-click": "wlogout",
+        "tooltip": false
+    },
+
+    "custom/weather": {
+        "format": "{}",
+        "max-length": 10,
+        "interval": 1800,
+        "exec": "$HOME/.config/waybar/scripts/get_weather.sh",
+        "exec-if": "ping wttr.in -c1"
+    },
+
+    "custom/spotify": {
+        "format": "{}",
+        "return-type": "json",
+        "max-length": 40,
+        "escape": true,
+        "exec": "$HOME/.config/waybar/scripts/mediaplayer.sh",
+        "exec-if": "pgrep spotify",
+        "on-click": "playerctl -p spotify play-pause",
+        "on-click-right": "playerctl -p spotify next",
+        "on-click-middle": "playerctl -p spotify previous",
+        "on-scroll-up": "playerctl -p spotify volume 0.05+",
+        "on-scroll-down": "playerctl -p spotify volume 0.05-",
+        "interval": 1
+    }
+}

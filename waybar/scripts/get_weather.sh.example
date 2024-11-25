@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Your city is stored here
+CITY="YourCity"
+
+# Get weather and format it
+curl -s "wttr.in/$CITY?format=%c%t&m" | tr -d '[:space:]%' | sed 's/️/️ /'
