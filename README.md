@@ -10,7 +10,7 @@ Personal dotfiles for my Arch Linux setup on my dual-booted desktop.
 - **Shell**: zsh 5.9
 - **Display Manager**: ly
 - **Theme**: catppuccin-macchiato-sky-standard+default
-- **Icons**: Papirus
+- **Icons**: Adwaita
 - **Resolution**: 2560x1440
 
 ### Hardware
