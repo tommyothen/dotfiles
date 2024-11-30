@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Set up screenshot path with timestamp
+screenshots_dir="$HOME/Pictures/Screenshots"
+filename="screenshot_$(date +'%Y-%m-%d_%H-%M-%S').png"
+filepath="$screenshots_dir/$filename"
+
+# Ensure screenshots directory exists
+mkdir -p "$screenshots_dir"
+
+# Take screenshot, save it, and copy to clipboard
+if grim -g "$(slurp)" - | tee "$filepath" | wl-copy; then
+    # Show notification with actions
+    response=$(dunstify -i "$filepath" \
+        "Screenshot Saved" \
+        "$filepath" \
+        --action="default,Open Image")
+
+    # Open image if notification is clicked
+    [[ "$response" == "default" ]] && imv "$filepath"
+fi

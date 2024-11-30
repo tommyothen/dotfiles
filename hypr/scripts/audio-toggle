@@ -1,0 +1,48 @@
+#!/bin/bash
+
+# Function to get the current default sink
+get_default_sink() {
+    pactl get-default-sink
+}
+
+# Function to get all running applications with audio
+get_audio_apps() {
+    pactl list short sink-inputs | cut -f1
+}
+
+# Function to move an application to the new sink
+move_input_to_sink() {
+    local INPUT=$1
+    local SINK=$2
+    pactl move-sink-input "$INPUT" "$SINK"
+}
+
+# Toggle between two sinks
+toggle_audio() {
+    local HEADPHONES="$1"
+    local SPEAKERS="$2"
+    local CURRENT_SINK=$(get_default_sink)
+    local NEW_SINK
+
+    if [ "$CURRENT_SINK" = "$HEADPHONES" ]; then
+        NEW_SINK="$SPEAKERS"
+        echo "Switching to Speakers (HDMI)"
+    else
+        NEW_SINK="$HEADPHONES"
+        echo "Switching to Momentum 4 Headphones"
+    fi
+
+    # Set the new default sink
+    pactl set-default-sink "$NEW_SINK"
+
+    # Move all running audio applications to the new sink
+    get_audio_apps | while read -r input ; do
+        move_input_to_sink "$input" "$NEW_SINK"
+    done
+}
+
+# `pactl list sinks` to get the sink names
+HEADPHONES_SINK="alsa_output.usb-Sonova_Consumer_Hearing_MOMENTUM_4_30284BD05D0BF3AB3C08-01.analog-stereo"
+SPEAKERS_SINK="alsa_output.pci-0000_09_00.1.hdmi-stereo"
+
+toggle_audio "$HEADPHONES_SINK" "$SPEAKERS_SINK"
